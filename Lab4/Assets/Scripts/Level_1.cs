@@ -10,15 +10,16 @@ public class Level_1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 100; i++) {
-            var position = new Vector3(Random.Range(-70f, 35f), Random.Range(-70f, 40f), 1);
-            Instantiate(American, position, Quaternion.identity);
-        }
+        American.transform.position = new Vector3(Random.Range(-60f, 45f),Random.Range(-60f, 45f),1);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (GetComponent<Collider2D>().gameObject.CompareTag("Player")) {
+			GetComponent<AudioSource>().Play();
+            Destroy(American);
+            print("ff");
+		}
     }
 }

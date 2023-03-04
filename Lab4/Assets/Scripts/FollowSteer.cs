@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FollowSteer : MonoBehaviour {
 
+	public GameObject cheese;
 	public GameObject target;
 	public float speed;
 	public float rotationSpeed;
@@ -12,7 +13,7 @@ public class FollowSteer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		body = GetComponent<Rigidbody2D>();
+		body = cheese.GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
@@ -31,15 +32,10 @@ public class FollowSteer : MonoBehaviour {
 		speed *= 1.2f;
 	}
 
-	void OnDrawGizmos() {
-		Gizmos.color = Color.yellow;
-		Vector3 direction = body.velocity;
-		Gizmos.DrawRay(transform.position, direction);
-	}
-
 	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.gameObject == target) {
 			GetComponent<AudioSource>().Play();
+			body.transform.position = new Vector2(Random.Range(-60f, 45f), Random.Range(-60f, 45f));
 		}
 	}
 }
