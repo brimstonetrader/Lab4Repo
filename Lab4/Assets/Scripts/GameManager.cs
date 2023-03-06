@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     private bool raiseLower = false;
     public GameObject mainScreen;
     public GameObject menuButton;
+    public GameObject Manager;
 
     public void DialogShow(string text) {
         dialogBox.SetActive(true);
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null){
             Instance = this;
             DontDestroyOnLoad(gameObject); 
+            DontDestroyOnLoad(Manager);
             DontDestroyOnLoad(canvas);
         } else {
         Destroy(gameObject);
