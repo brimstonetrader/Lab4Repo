@@ -14,6 +14,7 @@ public class Level_1 : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collider2D) {
         StartCoroutine("Beep");
         print("Entered..");
+        
         StopCoroutine("Beep");
     }
     public void OnTriggerExit2D(Collider2D collider2D) {
